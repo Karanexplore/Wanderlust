@@ -1,7 +1,10 @@
 body{
     font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    /* OLD - already replaced below for sticky footer layout */
     /* display: flex;
     flex-direction: column; */
+
     min-height: 100vh;
 }
 
@@ -9,12 +12,18 @@ body{
     flex: 1;
 }
 
-  /* Navbar */
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar{
     height: 5rem;
     background-color: white;
-    padding: 0.5rem 1 rem;
+
+    /* OLD - wrong spacing syntax */
+    /* padding: 0.5rem 1 rem; */
+
+    padding: 0.5rem 1rem;
 }
 
 .fa-compass {
@@ -25,50 +34,80 @@ body{
 .nav-link{
     color: #222222 !important;
 }
-/* Footer */
+
+/* =========================================
+   FOOTER
+========================================= */
+
 .f-info-links a {
     text-decoration: none;
     color: #222222;
 }
-.f-info-links a hover{
+
+/* OLD - wrong selector */
+/* .f-info-links a hover{
     text-decoration: underline;
-  
+} */
+
+.f-info-links a:hover{
+    text-decoration: underline;
 }
-.f-info-links, .f-info-socials, .f-info-brand{
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:center ;
+    justify-content: center;
 }
 
 .f-info-socials i{
-     font-size: 1.2rem;
+    font-size: 1.2rem;
     margin-right: 1rem;
 }
+
 .f-info{
     text-align: center;
     height: 8rem;
     background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
-    justify-content:center ;
-    align-items: space-evenly;
+    justify-content: center;
+
+    /* OLD - invalid flex value */
+    /* align-items: space-evenly; */
+
+    align-items: center;
+    align-content: space-evenly;
 }
 
-/* Cards */
+/* =========================================
+   CARDS
+========================================= */
+
 .listing-card{
     border: none !important;
     margin-bottom: 2rem;
 }
+
 .card-img-top{
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
 }
 
-.card-body{
+/* OLD - this was breaking card content spacing everywhere */
+/* .card-body{
     padding: 0 !important;
+} */
+
+/* Safer fix: only listing/show cards should have tight padding if needed */
+.listing-card .card-body,
+.show-card .card-body{
+    padding: 1rem !important;
 }
+
 .card-text p {
     font-weight: 400 !important;
 }
@@ -77,7 +116,10 @@ body{
     text-decoration: none;
 }
 
-/* Card Effect */
+/* =========================================
+   CARD EFFECT
+========================================= */
+
 .card-img-overlay{
     opacity: 0;
 }
@@ -87,80 +129,110 @@ body{
     background-color: white;
 }
 
-/* New Page */
+/* =========================================
+   NEW PAGE
+========================================= */
 
 .add-btn{
     background-color: #fe424d !important;
     border: none !important;
 }
 
-/* Edit Page */
+/* =========================================
+   EDIT PAGE
+========================================= */
 
 .edit-btn{
     background-color: #fe424d !important;
     border: none !important;
 }
 
-
-/* Show Page */
+/* =========================================
+   SHOW PAGE
+========================================= */
 
 .show-img{
     height: 30vh;
-}
-
-.btns {
-    display: flex;
+    width: 100%;
+    object-fit: cover;
 }
 
 .show-card{
     padding-left: 0;
     padding-right: 0;
+    border-radius: 1rem !important;
+    overflow: hidden;
 }
 
 .listing-img {
-  height: 380px;      
-  width: 100%;
-  object-fit: cover;    
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
 }
 
+/* =========================================
+   SHOW PAGE BUTTON FIX
+========================================= */
 
+/* OLD - simple flex only */
+/* .btns {
+    display: flex;
+} */
 
- 
-   /* NAVBAR RESPONSIVE FIX */
- 
+.btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.edit-btn-custom,
+.delete-btn-custom {
+    min-width: 100px;
+    padding: 0.55rem 1.2rem !important;
+    border-radius: 0.6rem !important;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* =========================================
+   NAVBAR RESPONSIVE FIX
+========================================= */
 
 @media (max-width: 768px) {
 
-  .navbar-nav {
-    width: 100%;
-  }
+    .navbar-nav {
+        width: 100%;
+    }
 
-  .navbar-collapse {
-    background-color: white;
-    padding: 1rem;
-  }
+    .navbar-collapse {
+        background-color: white;
+        padding: 1rem;
+    }
 
-  .navbar-nav form {
-    width: 100%;
-    margin: 0.5rem 0;
-  }
+    .navbar-nav form {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
 
-  .search-inp {
-    width: 100%;
-    padding: 0.5rem 1rem;
-  }
+    .search-inp {
+        width: 100%;
+        padding: 0.5rem 1rem;
+    }
 
-  .search-btn {
-    width: 50%;
-    margin-top: 0.5rem;
-  }
+    .search-btn {
+        width: 50%;
+        margin-top: 0.5rem;
+    }
 
-  .nav-link {
-    padding: 0.5rem 0;
-  }
+    .nav-link {
+        padding: 0.5rem 0;
+    }
 }
 
-
+/* =========================================
+   GLOBAL LAYOUT / STICKY FOOTER
+========================================= */
 
 html, body {
     height: 100%;
@@ -177,21 +249,124 @@ body {
     flex: 1;
 }
 
+/* =========================================
+   SEARCH BUTTON MOBILE FIX
+========================================= */
 
 @media (max-width: 768px) {
     .search-btn {
-        width: 120px;          
-        height: 40px;         
+        width: 120px;
+        height: 40px;
         padding: 8px 16px;
         font-size: 16px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;              
-        white-space: nowrap;  
+        gap: 6px;
+        white-space: nowrap;
     }
 
     .search-btn i {
         font-size: 16px;
+    }
+}
+
+/* =========================================
+   REVIEW SECTION RESPONSIVE FIX
+========================================= */
+
+.review-row {
+    row-gap: 0.5rem;
+}
+
+.review-card {
+    border-radius: 1rem !important;
+    border: 1px solid #e5e5e5 !important;
+    padding: 0.8rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.review-username {
+    font-size: 1.25rem;
+    font-weight: 700;
+    word-break: break-word;
+    margin-bottom: 0.4rem;
+}
+
+.review-comment {
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 0.4rem;
+}
+
+.review-delete-btn {
+    border-radius: 0.5rem !important;
+    padding: 0.35rem 0.9rem !important;
+}
+
+/* =========================================
+   MOBILE FIXES
+========================================= */
+
+@media (max-width: 576px) {
+
+    .btns {
+        gap: 0.8rem;
+        justify-content: flex-start;
+    }
+
+    .edit-btn-custom,
+    .delete-btn-custom {
+        min-width: 90px;
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem !important;
+    }
+
+    .review-card {
+        padding: 1rem;
+    }
+
+    .review-username {
+        font-size: 1.1rem;
+    }
+
+    .review-comment {
+        font-size: 0.95rem;
+    }
+
+    .starability-result {
+        transform: scale(0.9);
+        transform-origin: left center;
+    }
+
+    .show-img {
+        height: 26vh;
+    }
+
+    h3, h4, h5 {
+        word-break: break-word;
+    }
+
+    .listing-card .card-body,
+    .show-card .card-body {
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .show-img {
+        height: 30vh;
+    }
+
+    .btns {
+        justify-content: flex-start;
     }
 }
